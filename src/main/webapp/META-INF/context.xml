@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <!-- Database connection pool for production (use H2 for testing or change to MySQL/others for production) -->
+    <Resource name="jdbc/HealthDB"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.h2.Driver"
+              url="jdbc:h2:mem:testdb"
+              username="sa"
+              password="password"
+              maxTotal="20"
+              maxIdle="10"
+              minIdle="5"
+              maxWaitMillis="-1"/>
+
+    <!-- Optional context parameters -->
+    <Parameter name="spring.profiles.active" value="dev" override="false"/>
+
+    <!-- Optional session manager configuration -->
+    <Manager pathname=""/>
+
+    <!-- Application-specific environment variables -->
+    <Environment name="appName" value="SmartHealthDashboard" type="java.lang.String"/>
+
+    <!-- Disable session cookies (for enhanced security, you can remove if not needed) -->
+    <Valve className="org.apache.catalina.valves.CookieSetValve" />
+
+</Context>
